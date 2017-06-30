@@ -65,7 +65,7 @@
 				<attribute name="Class-Path" value="." />
 			</manifest>
 		</jar>	
-		<copy file="${dist.dir}/string_util.jar" todir="${lib.dir}" />
+		<copy file="${dist}/string_util.jar" todir="${lib.dir}" />
 	</target>
 	
 </project>
