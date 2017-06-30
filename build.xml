@@ -16,12 +16,11 @@
 		</path>
 	
 		<target name="clean">
-			<delete dir="${build.dir}"/>
+			<delete dir="${build.java.dir}"/>
 			<delete dir="${dist.dir}"/>
 		</target>
 		
 		<target name="init" depends="clean">
-			<mkdir dir="${build.dir}"/>
 			<mkdir dir="${build.java.dir}"/>
 			<mkdir dir="${dist.dir}"/>
 		</target>
@@ -45,13 +44,13 @@
 		</target>
 		
 		<target name="if_unix" depends="checkos" if="isLinux">
-			<javac target="1.7" source="1.7" destdir="${build.dir}" debug="true" srcdir="${src.dir}" fork="yes" executable="/opt/java7/bin/javac" compiler="javac1.7">
+			<javac target="1.7" source="1.7" destdir="${build.java.dir}" debug="true" srcdir="${src.dir}" fork="yes" executable="/opt/java7/bin/javac" compiler="javac1.7">
 				<classpath refid="compile.classpath" />
 			</javac>
 		</target>
 		
 		<target name="copy" depends="compile">
-			<copy todir="${build.dir}">
+			<copy todir="${build.java.dir}">
 				<fileset dir="${basedir}">
 					<include name="*.properties" />
 				</fileset>			
@@ -59,7 +58,7 @@
 		</target>
 		
 	<target name="jar" depends="compile">
-		<jar basedir="${build.dir}" destfile="${dist.dir}/string_util.jar" >
+		<jar basedir="${build.java.dir}" destfile="${dist.dir}/string_util.jar" >
 			<manifest>
 				<attribute name="Main-Class" value="com.discernnetwork.jenkins.util.StringUtil" />
 				<attribute name="Class-Path" value="." />
