@@ -6,7 +6,7 @@
 	<property name="src.dir" value="src"/>
 	<property name="build.dir" value="build"/>
 	<property name="build.java.dir" value="${build.dir}/classes"/>
-	<property name="lib.dir" value="lib"/>
+	<property name="lib.dir" value="../libs"/>
 	<property name="dist.dir" value="dist"/>
 	
 		<path id="compile.classpath">
@@ -64,6 +64,7 @@
 				<attribute name="Main-Class" value="com.discernnetwork.jenkins.util.StringUtil" />
 				<attribute name="Class-Path" value="." />
 			</manifest>
+			<copy file="${dist.dir}/string_util.jar" todir="${lib.dir}" />
 		</jar>	
 	</target>
 	
